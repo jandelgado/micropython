@@ -60,10 +60,10 @@ CFLAGS_XTENSA = -fsingle-precision-constant -Wdouble-promotion \
 
 CFLAGS_COMMON = -Wall -Wpointer-arith -Werror -nostdlib -DUART_OS=$(UART_OS) \
 
-CFLAGS = $(INC) $(CFLAGS_COMMON)-std=gnu99 \
+CFLAGS = $(INC) $(CFLAGS_COMMON) -std=gnu99 \
 	$(CFLAGS_XTENSA) $(CFLAGS_MOD) $(COPT) $(CFLAGS_EXTRA) -I$(BOARD_DIR)
 
-CXXFLAGS = -std=gnu++11 $(CFLAGS_XTENSA) $(CFLAGS_COMMON) $(INC) $(CXXFLAGS_MOD)
+CXXFLAGS = -std=gnu++11 $(CFLAGS_XTENSA) $(CFLAGS_COMMON) $(INC) $(CXXFLAGS_MOD) -I$(BOARD_DIR)
 
 LD_FILES ?= boards/esp8266_2m.ld
 LDFLAGS = -nostdlib -T $(LD_FILES) -Map=$(@:.elf=.map) --cref
